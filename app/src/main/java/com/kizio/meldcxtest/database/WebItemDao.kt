@@ -12,7 +12,7 @@ interface WebItemDao {
 
 	@Query("SELECT * FROM web_items WHERE uid IN (:itemIds)")
 	fun loadAllByIds(itemIds: IntArray): List<WebItem>
-	
+
 	@Insert
 	fun insertAll(vararg webItems: WebItem)
 
