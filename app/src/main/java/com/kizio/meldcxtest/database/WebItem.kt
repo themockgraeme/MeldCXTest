@@ -16,6 +16,6 @@ import java.util.*
  */
 @Entity(tableName = "web_items")
 data class WebItem (@PrimaryKey val uid: Int/*,
-                    @ColumnInfo(name = "url") val url: Uri,
+                    @ColumnInfo(name = "url") val url: String,
                     @ColumnInfo(name = "date_time") val date: Date,
                     @ColumnInfo(name = "image") val image: Bitmap*/)
