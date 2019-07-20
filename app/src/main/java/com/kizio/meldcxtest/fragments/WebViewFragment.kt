@@ -81,7 +81,7 @@ class WebViewFragment : Fragment() {
     }
 
     private fun showHistory() {
-        // TODO Show the history fragment
+        //activity?.supportFragmentManager?.putFragment(Bundle(), "History", HistoryFragment())
     }
 
     /**
