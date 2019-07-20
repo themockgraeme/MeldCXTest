@@ -1,11 +1,9 @@
 package com.kizio.meldcxtest
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.kizio.meldcxtest.database.WebItemDatabase
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,16 +18,5 @@ class MainActivity : AppCompatActivity() {
 			applicationContext,
 			WebItemDatabase::class.java, "web_item"
 		).build()
-	}
-
-	/**
-	 * Handler for the Go button. Redirects the app to the web address in the text box.
-	 *
-	 * @param view The [View] that was clicked on
-	 */
-	fun onClickGo(view: View?) {
-		val url = web_address.text.toString()
-
-		web_view.loadUrl(url)
 	}
 }

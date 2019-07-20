@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">MeldCX Test</string>
-    <string name="web_address_hint">Web Address</string>
+    <string name="url_hint">URL…</string>
     <string name="go">Go</string>
+    <string name="capture">Capture</string>
+    <string name="history">History</string>
 </resources>

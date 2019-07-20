@@ -2,8 +2,10 @@ package com.kizio.meldcxtest.database
 
 import android.graphics.Bitmap
 import android.net.Uri
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import java.util.*
 
 /**
@@ -15,7 +17,8 @@ import java.util.*
  * @param image A [Bitmap] containing a snapshot of the web page
  */
 @Entity(tableName = "web_items")
-data class WebItem (@PrimaryKey val uid: Int/*,
-                    @ColumnInfo(name = "url") val url: String,
-                    @ColumnInfo(name = "date_time") val date: Date,
-                    @ColumnInfo(name = "image") val image: Bitmap*/)
+@TypeConverters(BitmapConverter::class, DateConverter::class)
+data class WebItem (@PrimaryKey val uid: Int,
+					@ColumnInfo(name = "url") val url: String,
+					@ColumnInfo(name = "date") val date: Date,
+					@ColumnInfo(name = "image", typeAffinity = ColumnInfo.BLOB) val image: Bitmap)
