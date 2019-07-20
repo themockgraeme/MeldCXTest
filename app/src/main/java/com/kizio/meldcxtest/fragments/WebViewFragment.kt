@@ -8,14 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.kizio.meldcxtest.R
+import com.kizio.meldcxtest.database.WebItem
+import com.kizio.meldcxtest.utilities.WriteWebItemTask
 import com.kizio.meldcxtest.web.MeldWebClient
 import kotlinx.android.synthetic.main.fragment_web_view.*
-import java.io.File
-import java.io.FileOutputStream
+import java.util.*
 
 class WebViewFragment : Fragment() {
 
@@ -74,10 +74,10 @@ class WebViewFragment : Fragment() {
     }
 
     private fun captureView() {
-        val bitmap = getWebViewAsBitmap()
-        val path = writeBitmap(bitmap)
+        val webItem = WebItem(web_view.url, Date(), getWebViewAsBitmap())
+        val task = WriteWebItemTask(context!!)
 
-        Toast.makeText(context, path, Toast.LENGTH_LONG).show()
+        task.execute(webItem)
     }
 
     private fun showHistory() {
@@ -97,28 +97,5 @@ class WebViewFragment : Fragment() {
         web_view.draw(canvas)
 
         return bitmap
-    }
-
-    private fun writeBitmap(bitmap: Bitmap) : String? {
-        val folder = context?.filesDir
-        val path : String?
-
-        // TODO This needs to go into an AsyncTask to avoid clobbering the UI thread.
-        if (folder != null && folder.isDirectory) {
-            // TODO File counter needed for multiple saves
-            val file = File(folder.absolutePath, "WebView.PNG")
-            val fos = FileOutputStream(file)
-
-            bitmap.compress(Bitmap.CompressFormat.PNG, 90, fos)
-
-            fos.flush()
-            fos.close()
-
-            path = file.absolutePath
-        } else {
-            path = null
-        }
-
-        return path
     }
 }

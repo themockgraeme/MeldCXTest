@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "8f5ebc0edf6a2bd4d544e80d5ddcae19",
+    "identityHash": "ecfba76c5616cbede1328ea727c40328",
     "entities": [
       {
         "tableName": "web_items",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER NOT NULL, `url` TEXT NOT NULL, `date_time` INTEGER NOT NULL, `image` TEXT NOT NULL, PRIMARY KEY(`uid`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`uid` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `url` TEXT NOT NULL, `date` INTEGER NOT NULL, `image` BLOB NOT NULL)",
         "fields": [
           {
             "fieldPath": "uid",
@@ -22,14 +22,14 @@
           },
           {
             "fieldPath": "date",
-            "columnName": "date_time",
+            "columnName": "date",
             "affinity": "INTEGER",
             "notNull": true
           },
           {
             "fieldPath": "image",
             "columnName": "image",
-            "affinity": "TEXT",
+            "affinity": "BLOB",
             "notNull": true
           }
         ],
@@ -37,7 +37,7 @@
           "columnNames": [
             "uid"
           ],
-          "autoGenerate": false
+          "autoGenerate": true
         },
         "indices": [],
         "foreignKeys": []
@@ -46,7 +46,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8f5ebc0edf6a2bd4d544e80d5ddcae19')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ecfba76c5616cbede1328ea727c40328')"
     ]
   }
 }

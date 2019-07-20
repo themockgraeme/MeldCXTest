@@ -18,7 +18,9 @@ import java.util.*
  */
 @Entity(tableName = "web_items")
 @TypeConverters(BitmapConverter::class, DateConverter::class)
-data class WebItem (@PrimaryKey val uid: Int,
-					@ColumnInfo(name = "url") val url: String,
+data class WebItem (@ColumnInfo(name = "url") val url: String,
 					@ColumnInfo(name = "date") val date: Date,
-					@ColumnInfo(name = "image", typeAffinity = ColumnInfo.BLOB) val image: Bitmap)
+					@ColumnInfo(name = "image", typeAffinity = ColumnInfo.BLOB) val image: Bitmap) {
+	@PrimaryKey(autoGenerate = true)
+	var uid: Int = 0
+}
