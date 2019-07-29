@@ -6,7 +6,7 @@ import com.kizio.meldcxtest.database.WebItem
 import com.kizio.meldcxtest.database.WebItemDatabase
 
 class WriteWebItemTask(context: Context) : AsyncTask<WebItem, Void, Void> () {
-	val database = WebItemDatabase.getInstance(context)
+	private val database = WebItemDatabase.getInstance(context)
 
 	override fun doInBackground(vararg webItems: WebItem?): Void? {
 		for (webItem in webItems) {
