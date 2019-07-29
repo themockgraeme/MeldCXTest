@@ -7,14 +7,58 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <fragment
-            android:name="com.kizio.meldcxtest.fragments.WebViewFragment"
-            android:id="@+id/web_view_fragment"
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/web_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="?attr/colorPrimary">
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <EditText
+                    android:id="@+id/web_address"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/url_hint"
+                    android:autofillHints="url"
+                    android:inputType="textUri"
+                    android:singleLine="true"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    tools:targetApi="o"/>
+            <Button
+                    android:id="@+id/go_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/go"
+                    android:onClick="onGo" />
+            <Button
+                    android:id="@+id/capture_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/capture"
+                    android:onClick="onCapture" />
+            <Button
+                    android:id="@+id/history_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/history"
+                    android:onClick="onHistory"/>
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <WebView
+            android:id="@+id/web_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/web_toolbar"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
